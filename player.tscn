@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player.gd" id="1_63i78"]
 [ext_resource type="Texture2D" uid="uid://c4xj7ep4vr33k" path="res://Assets/PNG/Default/character_roundRed.png" id="1_ky6yi"]
-[ext_resource type="PackedScene" uid="uid://we345fw8n8h3" path="res://gun.tscn" id="3_mwmg8"]
+[ext_resource type="Texture2D" uid="uid://djjy1ng0p553i" path="res://Assets/PNG/Default/item_blaster.png" id="3_td4ci"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56kyx"]
 size = Vector2(28, 57)
@@ -18,5 +18,11 @@ texture = ExtResource("1_ky6yi")
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_56kyx")
 
-[node name="Gun" parent="." instance=ExtResource("3_mwmg8")]
-position = Vector2(43, 0)
+[node name="Gun" type="Node2D" parent="."]
+position = Vector2(42, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Gun"]
+texture = ExtResource("3_td4ci")
+
+[node name="Marker2D" type="Marker2D" parent="Gun"]
+position = Vector2(22, -3)

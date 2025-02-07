@@ -6,6 +6,7 @@ extends Node2D
 var true_shoot = true
 var bullets = 5
 
+
 func _physics_process(delta: float) -> void:
 	look_at(get_global_mouse_position())
 	rotation_degrees = wrap(rotation_degrees, 0, 360)
@@ -22,7 +23,6 @@ func shoot():
 	bullet.direction = rotation
 	bullet.spawnRot = rotation
 	bullet.bounce = 5
-	bullet.zdex = z_index -1
 	get_tree().root.add_child(bullet)
 	bullets -= 1
 	true_shoot = false
