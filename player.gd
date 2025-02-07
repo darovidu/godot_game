@@ -4,16 +4,18 @@ extends CharacterBody2D
 const SPEED = 300.0
 
 @onready var Bullet = preload("res://bullet.tscn")
+@onready var Ui = preload("res://ui.tscn")
 @onready var gun = $Gun
 @onready var marker = $Gun/Marker2D
 @onready var sprite: Sprite2D = $Sprite2D
 
 var direction = Vector2.ZERO
+var cooldown = true
 
 
 func _physics_process(delta: float) -> void:
 	get_input()
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") and Global.bullets > 0 and cooldown == false:
 		shoot()
 	print(direction.x)
 	#if direction.x == 1:
@@ -44,3 +46,10 @@ func shoot():
 	bullet.rotation = direction_mouse.angle()
 	bullet.bounce = 5
 	get_tree().root.add_child(bullet)
+	Global.bullets -= 1
+	cooldown = true
+	$Timer.start()
+
+
+func _on_timer_timeout() -> void:
+	cooldown = false

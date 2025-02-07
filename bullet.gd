@@ -2,18 +2,19 @@ extends CharacterBody2D
 
 
 var direction = Vector2.ZERO
-var speed = 50000
-var bounce = 0
+var speed = 500
+var bounce
 
+
+func _ready() -> void:
+	velocity = direction * speed
 
 func _physics_process(delta: float) -> void:
-	velocity = direction * speed * delta
-	move_and_slide()
-	if get_slide_collision_count() >= 1:
-		var collision = get_slide_collision(0)
-		if collision != null:
-			print("collision")
-			if bounce > 0:
-				velocity = velocity.bounce(collision.get_normal())
-			else:
-				queue_free()
+	var collision_info = move_and_collide(velocity * delta)
+	if collision_info:
+		if bounce > 0:
+			velocity = velocity.bounce(collision_info.get_normal())
+			rotation = velocity.angle()
+			bounce -= 1
+		else:
+			queue_free()

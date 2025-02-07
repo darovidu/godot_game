@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvyyyeq380w6"]
+[gd_scene load_steps=3 format=3 uid="uid://cvyyyeq380w6"]
 
+[ext_resource type="Script" path="res://ui.gd" id="1_nsw0f"]
 [ext_resource type="Texture2D" uid="uid://e5mi4lwomwst" path="res://Assets/PNG/Default/effect_shot.png" id="1_sp7mb"]
 
 [node name="UI" type="CanvasLayer"]
+script = ExtResource("1_nsw0f")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0
@@ -14,3 +16,4 @@ offset_left = 53.0
 offset_top = 21.0
 offset_right = 93.0
 offset_bottom = 44.0
+text = "0"
